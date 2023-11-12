@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import CreateGroup from "./CreateGroup.js";
+import RangeDate from "../Date/RangeDate";
 
 const CreateGroupPolly = ({ news }) => {
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -115,20 +116,25 @@ const CreateGroupPolly = ({ news }) => {
         <Grid className="sx_news" item xs={3}>
           <News news={news} start={0} numberOfDivsNews={2} />
         </Grid>
-        <Grid className="field" item xs={6}>
-          <CreateGroup
-            title={title}
-            setTitle={updateTitle}
-            description={description}
-            setDescription={updateDescription}
-            location={location}
-            setLocation={updateLocation}
-            video={video}
-            setVideo={updateVideo}
-            checked={checked}
-            setChecked={updateCheck}
-            error={error}
-          />
+        <Grid item xs={6}>
+          <div className="field">
+            <CreateGroup
+              title={title}
+              setTitle={updateTitle}
+              description={description}
+              setDescription={updateDescription}
+              location={location}
+              setLocation={updateLocation}
+              video={video}
+              setVideo={updateVideo}
+              checked={checked}
+              setChecked={updateCheck}
+              error={error}
+            />
+          </div>
+          <div className="field" item xs={6}>
+            <RangeDate />
+          </div>
           <div style={{ textAlign: "end" }}>
             <ColorButton
               style={{ margin: 20, textAlign: "end" }}

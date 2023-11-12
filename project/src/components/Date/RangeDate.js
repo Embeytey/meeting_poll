@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Calendar } from "primereact/calendar";
+import CalendarDate from "./Calander";
 
 function RangeDate() {
   const [dates, setDates] = useState(null);
@@ -11,6 +12,7 @@ function RangeDate() {
         selectionMode="range"
         readOnlyInput
       />
+      <CalendarDate />
     </div>
   );
 }

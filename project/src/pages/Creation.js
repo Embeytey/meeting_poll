@@ -7,7 +7,7 @@ const Creation = () => {
   return (
     <div>
       <CreateGroupPolly news={news} />
-      
+     
     </div>
   );
 };
