@@ -14,8 +14,9 @@
 }
 
 .field2 {
-  background-color: rgb(124, 41, 41);
-  box-shadow: 0 0 10px #963838;
+  margin-top: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px #858585;
   border-radius: 10px;
-  height: fit-content;
+  height: 400px;
 }
