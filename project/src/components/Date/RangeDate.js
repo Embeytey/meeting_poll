@@ -4,15 +4,43 @@ import CalendarDate from "./Calander";
 
 function RangeDate() {
   const [dates, setDates] = useState(null);
+  const sendDatesToBackend = async () => {
+    try {
+      if (dates) {
+        const response = await fetch(
+          // "https://your-backend-api-endpoint.com/save-dates",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ dates: dates }),
+          }
+        );
+
+        if (response.ok) {
+          console.log("Dates sent to the backend successfully!");
+        } else {
+          console.error("Failed to send dates to the backend.");
+        }
+      }
+    } catch (error) {
+      console.error("Error while sending dates to the backend:", error);
+    }
+  };
+  
+
   return (
     <div className="card flex justify-content-center">
+      <CalendarDate />
       <Calendar
         value={dates}
         onChange={(e) => setDates(e.value)}
         selectionMode="range"
         readOnlyInput
       />
-      <CalendarDate />
+
+      <button onClick={sendDatesToBackend}>Save</button>
     </div>
   );
 }

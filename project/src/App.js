@@ -15,14 +15,13 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-
       <Router>
         <Routes>
           <Route exact path="/" element={<Welcome />} />
           <Route path="/create" element={<Creation />} />
           <Route path="/manage" element={<Manage />} />
         </Routes>
-      </Router>
+      </Router>{" "}
     </div>
   );
 }
