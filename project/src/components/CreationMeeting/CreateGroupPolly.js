@@ -113,8 +113,8 @@ const CreateGroupPolly = ({ news }) => {
               onExpand={onExpand}
             />
           </div>
-          <div className="field">
-            <RangeDate />
+          <div className="field2">
+            <RangeDate onExpand={onExpand} />
           </div>
           <div style={{ textAlign: "end" }}>
             <ColorButton

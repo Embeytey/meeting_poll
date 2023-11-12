@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Calendar } from "primereact/calendar";
 import CalendarDate from "./Calander";
 
-function RangeDate() {
+function RangeDate(onExpand) {
   const [dates, setDates] = useState(null);
   const sendDatesToBackend = async () => {
     try {
@@ -28,16 +28,16 @@ function RangeDate() {
       console.error("Error while sending dates to the backend:", error);
     }
   };
-  
 
   return (
-    <div className="card flex justify-content-center">
+    <div onExpand={onExpand}>
       <CalendarDate />
       <Calendar
         value={dates}
         onChange={(e) => setDates(e.value)}
         selectionMode="range"
         readOnlyInput
+        onExpand={{ onExpand }}
       />
 
       <button onClick={sendDatesToBackend}>Save</button>
