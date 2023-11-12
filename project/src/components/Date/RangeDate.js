@@ -30,12 +30,12 @@ function RangeDate({ onContraction, onExpand }) {
   };
 
   return (
-    <div className="card flex justify-content-center">
+    <div onExpand={onExpand}>
       <CalendarDate />
 
       <Calendar
         value={dates}
-        onChange={(e) => console.log("QUi")}
+        onChange={(e) => setDates(e.value)}
         selectionMode="range"
         readOnlyInput
         onShow={() => onExpand(1)}

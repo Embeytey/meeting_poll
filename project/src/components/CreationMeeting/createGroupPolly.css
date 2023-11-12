@@ -12,3 +12,10 @@
   padding-left: 0 !important;
   padding-top: 0 !important;
 }
+
+.field2 {
+  background-color: rgb(124, 41, 41);
+  box-shadow: 0 0 10px #963838;
+  border-radius: 10px;
+  height: fit-content;
+}
