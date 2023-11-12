@@ -1,4 +1,3 @@
-import { useState } from "react";
 import correctImage from "../images/correct.png";
 import noImage from "../images/no.png";
 import waitImage from "../images/wait.png";

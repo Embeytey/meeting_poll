@@ -29,14 +29,12 @@ const Manage = () => {
   const [selectedColumns, setSelectedColumns] = useState([]);
 
   const columnSelection = (columnName) => {
-    // console.log("col ", columnName);
     if (columnName !== "partecipants") {
       if (selectedColumns.includes(columnName)) {
         setSelectedColumns(selectedColumns.filter((col) => col !== columnName));
       } else {
         setSelectedColumns([...selectedColumns, columnName]);
       }
-      // console.log("list ", selectedColumns);
     }
   };
 

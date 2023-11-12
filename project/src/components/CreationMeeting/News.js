@@ -1,7 +1,5 @@
 import "./news.css";
 
-// start is the inital number to start index of our json file
-// numberOfDivsNews number of div inside the page
 const News = ({ news, start, numberOfDivsNews }) => {
   return (
     <div>

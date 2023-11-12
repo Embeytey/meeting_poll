@@ -60,7 +60,6 @@ const SwitchSelect = ({
   onContraction,
 }) => {
   const handleVideoChange = (selectedOption) => {
-    console.log("Log ", selectedOption.value);
     setVideo(selectedOption.value);
   };
 
