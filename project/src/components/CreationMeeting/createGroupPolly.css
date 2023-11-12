@@ -1,7 +1,14 @@
 .sx_news {
   padding-right: 10px !important;
+  padding-top: 35px !important;
 }
 
 .dx_news {
   padding-left: 10px !important;
+  padding-top: 35px !important;
+}
+
+.middle_grid {
+  padding-left: 0 !important;
+  padding-top: 0 !important;
 }

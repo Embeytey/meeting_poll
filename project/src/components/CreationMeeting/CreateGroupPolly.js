@@ -8,7 +8,11 @@ import Button from "@mui/material/Button";
 import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import CreateGroup from "./CreateGroup.js";
+<<<<<<< HEAD
 import RangeDate from "../Date/RangeDate";
+=======
+import RangeDate from "../../pages/RangeDate.js";
+>>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
 
 const CreateGroupPolly = ({ news }) => {
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -18,30 +22,6 @@ const CreateGroupPolly = ({ news }) => {
       backgroundColor: grey[700],
     },
   }));
-
-  // const [numberOfDivsNews, setNumberOfDivsNews] = useState(0);
-
-  // useEffect(() => {
-  //   const calculatePageHeight = () => {
-  //     const body = document.body;
-  //     const html = document.documentElement;
-  //     const height = Math.max(
-  //       body.scrollHeight,
-  //       body.offsetHeight,
-  //       html.clientHeight,
-  //       html.scrollHeight,
-  //       html.offsetHeight
-  //     );
-  //     console.log(height);
-  //     setNumberOfDivsNews(Math.ceil(height / 500) - 1);
-  //   };
-
-  //   window.onload = calculatePageHeight;
-
-  //   return () => {
-  //     window.onload = null;
-  //   };
-  // });
 
   const [error, setError] = useState(false);
 
@@ -80,6 +60,16 @@ const CreateGroupPolly = ({ news }) => {
     // console.log(event.target.checked);
   };
 
+  const onExpand = () => {
+    const btn = document.getElementsByClassName("field");
+    btn[0].style.marginBottom = "120px";
+  };
+
+  const onContraction = () => {
+    const btn = document.getElementsByClassName("field");
+    btn[0].style.marginBottom = "0px";
+  };
+
   const submitForm = () => {
     if (title === "") {
       setError(true);
@@ -111,12 +101,16 @@ const CreateGroupPolly = ({ news }) => {
   };
 
   return (
-    <div className="CreateGrouppolly">
+    <div className="CreateGroupPolly">
       <Grid container spacing={2}>
         <Grid className="sx_news" item xs={3}>
           <News news={news} start={0} numberOfDivsNews={2} />
         </Grid>
+<<<<<<< HEAD
         <Grid item xs={6}>
+=======
+        <Grid className="middle_grid" item xs={6}>
+>>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
           <div className="field">
             <CreateGroup
               title={title}
@@ -125,14 +119,25 @@ const CreateGroupPolly = ({ news }) => {
               setDescription={updateDescription}
               location={location}
               setLocation={updateLocation}
+<<<<<<< HEAD
               video={video}
+=======
+              onContraction={onContraction}
+>>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
               setVideo={updateVideo}
               checked={checked}
               setChecked={updateCheck}
               error={error}
+<<<<<<< HEAD
             />
           </div>
           <div className="field" item xs={6}>
+=======
+              onExpand={onExpand}
+            />
+          </div>
+          <div className="field">
+>>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
             <RangeDate />
           </div>
           <div style={{ textAlign: "end" }}>
