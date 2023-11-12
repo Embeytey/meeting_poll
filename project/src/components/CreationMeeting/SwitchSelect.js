@@ -52,7 +52,13 @@ const IconSingleValue = (props) => (
   </SingleValue>
 );
 
-const SwitchSelect = ({ checked, setChecked, video, setVideo }) => {
+const SwitchSelect = ({
+  checked,
+  setChecked,
+  setVideo,
+  onExpand,
+  onContraction,
+}) => {
   const handleVideoChange = (selectedOption) => {
     console.log("Log ", selectedOption.value);
     setVideo(selectedOption.value);
@@ -69,6 +75,8 @@ const SwitchSelect = ({ checked, setChecked, video, setVideo }) => {
           img
           defaultValue={options[0]}
           options={options}
+          onMenuOpen={onExpand}
+          onMenuClose={onContraction}
           onChange={handleVideoChange}
           components={{ SingleValue: IconSingleValue, Option: IconOption }}
         />

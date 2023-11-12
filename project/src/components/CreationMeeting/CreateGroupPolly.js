@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import CreateGroup from "./CreateGroup.js";
+import RangeDate from "../../pages/RangeDate.js";
 
 const CreateGroupPolly = ({ news }) => {
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -17,30 +18,6 @@ const CreateGroupPolly = ({ news }) => {
       backgroundColor: grey[700],
     },
   }));
-
-  // const [numberOfDivsNews, setNumberOfDivsNews] = useState(0);
-
-  // useEffect(() => {
-  //   const calculatePageHeight = () => {
-  //     const body = document.body;
-  //     const html = document.documentElement;
-  //     const height = Math.max(
-  //       body.scrollHeight,
-  //       body.offsetHeight,
-  //       html.clientHeight,
-  //       html.scrollHeight,
-  //       html.offsetHeight
-  //     );
-  //     console.log(height);
-  //     setNumberOfDivsNews(Math.ceil(height / 500) - 1);
-  //   };
-
-  //   window.onload = calculatePageHeight;
-
-  //   return () => {
-  //     window.onload = null;
-  //   };
-  // });
 
   const [error, setError] = useState(false);
 
@@ -79,6 +56,16 @@ const CreateGroupPolly = ({ news }) => {
     // console.log(event.target.checked);
   };
 
+  const onExpand = () => {
+    const btn = document.getElementsByClassName("field");
+    btn[0].style.marginBottom = "120px";
+  };
+
+  const onContraction = () => {
+    const btn = document.getElementsByClassName("field");
+    btn[0].style.marginBottom = "0px";
+  };
+
   const submitForm = () => {
     if (title === "") {
       setError(true);
@@ -110,25 +97,31 @@ const CreateGroupPolly = ({ news }) => {
   };
 
   return (
-    <div className="CreateGrouppolly">
+    <div className="CreateGroupPolly">
       <Grid container spacing={2}>
         <Grid className="sx_news" item xs={3}>
           <News news={news} start={0} numberOfDivsNews={2} />
         </Grid>
-        <Grid className="field" item xs={6}>
-          <CreateGroup
-            title={title}
-            setTitle={updateTitle}
-            description={description}
-            setDescription={updateDescription}
-            location={location}
-            setLocation={updateLocation}
-            video={video}
-            setVideo={updateVideo}
-            checked={checked}
-            setChecked={updateCheck}
-            error={error}
-          />
+        <Grid className="middle_grid" item xs={6}>
+          <div className="field">
+            <CreateGroup
+              title={title}
+              setTitle={updateTitle}
+              description={description}
+              setDescription={updateDescription}
+              location={location}
+              setLocation={updateLocation}
+              onContraction={onContraction}
+              setVideo={updateVideo}
+              checked={checked}
+              setChecked={updateCheck}
+              error={error}
+              onExpand={onExpand}
+            />
+          </div>
+          <div className="field">
+            <RangeDate />
+          </div>
           <div style={{ textAlign: "end" }}>
             <ColorButton
               style={{ margin: 20, textAlign: "end" }}

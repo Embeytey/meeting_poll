@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import TableMeeting from "./TableMeeting";
+import "./manage.css";
 
 const ManageMeeting = () => {
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -32,7 +32,7 @@ const ManageMeeting = () => {
   }));
 
   return (
-    <div>
+    <div className="CreateGroup">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
@@ -113,7 +113,6 @@ const ManageMeeting = () => {
               </Grid>
             </Grid>
           </Box>
-          {/* <TableMeeting /> */}
         </Grid>
       </Box>
     </div>

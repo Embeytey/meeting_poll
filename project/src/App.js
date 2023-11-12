@@ -10,16 +10,17 @@ import {
 } from "react-router-dom";
 import Creation from "./pages/Creation";
 import AddTime from "./pages/RangeDate";
+import Manage from "./components/ManageMeeting/ManageMeetingContainer";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <AddTime />
       <Router>
         <Routes>
           <Route exact path="/" element={<Welcome />} />
           <Route path="/create" element={<Creation />} />
+          <Route path="/manage" element={<Manage />} />
         </Routes>
       </Router>
     </div>

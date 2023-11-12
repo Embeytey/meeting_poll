@@ -5,6 +5,7 @@
   font-size: 32px;
   font-weight: bold;
   text-align: center;
+  padding-top: 20px;
 }
 
 .field {
@@ -16,4 +17,9 @@
 
 .switch {
   margin: 20px;
+  padding-bottom: 20px;
+}
+
+.form_creation {
+  padding-left: 15px;
 }

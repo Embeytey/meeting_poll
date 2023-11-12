@@ -11,11 +11,12 @@ const CreateGroup = ({
   setDescription,
   location,
   setLocation,
-  video,
+  onContraction,
   setVideo,
   checked,
   setChecked,
   error,
+  onExpand,
 }) => {
   return (
     <div className="CreateGroup">
@@ -35,7 +36,7 @@ const CreateGroup = ({
         noValidate
         autoComplete="off"
       >
-        <div>
+        <div className="form_creation">
           <TextField
             required
             helperText={error ? "Your invite needs a name" : ""}
@@ -47,7 +48,7 @@ const CreateGroup = ({
           />
         </div>
 
-        <div>
+        <div className="form_creation">
           <TextField
             id="outlined-multiline-flexible"
             label="Description"
@@ -58,7 +59,7 @@ const CreateGroup = ({
           />
         </div>
 
-        <div>
+        <div className="form_creation">
           <TextField
             id="outlined"
             label="Location"
@@ -68,9 +69,10 @@ const CreateGroup = ({
         </div>
         <SwitchSelect
           checked={checked}
-          video={video}
+          onContraction={onContraction}
           setChecked={setChecked}
           setVideo={setVideo}
+          onExpand={onExpand}
         />
       </Box>
     </div>
