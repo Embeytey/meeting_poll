@@ -51,14 +51,16 @@ const CreateGroupPolly = ({ news }) => {
     setChecked(event.target.checked);
   };
 
-  const onExpand = () => {
+  const onExpand = (index) => {
     const btn = document.getElementsByClassName("field");
-    btn[0].style.marginBottom = "120px";
+    if (index === 0) btn[0].style.marginBottom = "120px";
+    else btn[1].style.paddingBottom = "180px";
   };
 
-  const onContraction = () => {
+  const onContraction = (index) => {
     const btn = document.getElementsByClassName("field");
-    btn[0].style.marginBottom = "0px";
+    if (index === 0) btn[0].style.marginBottom = "0px";
+    else btn[1].style.paddingBottom = "0px";
   };
 
   const submitForm = () => {
@@ -114,7 +116,7 @@ const CreateGroupPolly = ({ news }) => {
             />
           </div>
           <div className="field">
-            <RangeDate />
+            <RangeDate onExpand={onExpand} onContraction={onContraction} />
           </div>
           <div style={{ textAlign: "end" }}>
             <ColorButton

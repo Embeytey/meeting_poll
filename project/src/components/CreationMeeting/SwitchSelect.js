@@ -74,8 +74,8 @@ const SwitchSelect = ({
           img
           defaultValue={options[0]}
           options={options}
-          onMenuOpen={onExpand}
-          onMenuClose={onContraction}
+          onMenuOpen={() => onExpand(0)}
+          onMenuClose={() => onContraction(0)}
           onChange={handleVideoChange}
           components={{ SingleValue: IconSingleValue, Option: IconOption }}
         />
