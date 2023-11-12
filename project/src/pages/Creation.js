@@ -7,10 +7,6 @@ const Creation = () => {
   return (
     <div>
       <CreateGroupPolly news={news} />
-<<<<<<< HEAD
-     
-=======
->>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
     </div>
   );
 };

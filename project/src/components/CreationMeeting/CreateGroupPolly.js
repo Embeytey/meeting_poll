@@ -8,11 +8,8 @@ import Button from "@mui/material/Button";
 import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import CreateGroup from "./CreateGroup.js";
-<<<<<<< HEAD
 import RangeDate from "../Date/RangeDate";
-=======
-import RangeDate from "../../pages/RangeDate.js";
->>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
+
 
 const CreateGroupPolly = ({ news }) => {
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -106,11 +103,11 @@ const CreateGroupPolly = ({ news }) => {
         <Grid className="sx_news" item xs={3}>
           <News news={news} start={0} numberOfDivsNews={2} />
         </Grid>
-<<<<<<< HEAD
-        <Grid item xs={6}>
-=======
+
+        
+
         <Grid className="middle_grid" item xs={6}>
->>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
+
           <div className="field">
             <CreateGroup
               title={title}
@@ -119,25 +116,19 @@ const CreateGroupPolly = ({ news }) => {
               setDescription={updateDescription}
               location={location}
               setLocation={updateLocation}
-<<<<<<< HEAD
+
               video={video}
-=======
+
               onContraction={onContraction}
->>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
+
               setVideo={updateVideo}
               checked={checked}
               setChecked={updateCheck}
               error={error}
-<<<<<<< HEAD
-            />
-          </div>
-          <div className="field" item xs={6}>
-=======
               onExpand={onExpand}
             />
           </div>
           <div className="field">
->>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
             <RangeDate />
           </div>
           <div style={{ textAlign: "end" }}>
@@ -153,7 +144,8 @@ const CreateGroupPolly = ({ news }) => {
         <Grid className="dx_news" item xs={3}>
           <News news={news} start={3} numberOfDivsNews={5} />
         </Grid>
-      </Grid>
+        </Grid>
+        
     </div>
   );
 };

@@ -9,20 +9,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import Creation from "./pages/Creation";
-<<<<<<< HEAD
-=======
-import AddTime from "./pages/RangeDate";
 import Manage from "./components/ManageMeeting/ManageMeetingContainer";
->>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-<<<<<<< HEAD
 
-=======
->>>>>>> 6b75ab52178655d3e9629db1be5c85deade41ee3
       <Router>
         <Routes>
           <Route exact path="/" element={<Welcome />} />
@@ -30,7 +23,6 @@ function App() {
           <Route path="/manage" element={<Manage />} />
         </Routes>
       </Router>
-    
     </div>
   );
 }
