@@ -6,8 +6,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
-} from "react-router-dom";
+  } from "react-router-dom";
 import Creation from "./pages/Creation";
 import Manage from "./components/ManageMeeting/ManageMeetingContainer";
 
