@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import TimePicker from "react-time-picker";
+import "react-time-picker/dist/TimePicker.css";
+import "react-clock/dist/Clock.css";
 
 export default function CalendarDate() {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState("10:00");
+  const [selectedTime, setSelectedTime] = useState("09:00");
   const [values, onChange] = useState([new Date()]);
 
   const handleDateChange = (value) => {
@@ -15,10 +17,10 @@ export default function CalendarDate() {
   const handleTimeChange = (time) => {
     setSelectedTime(time);
   };
-const onExpand = () => {
-  const btn = document.getElementsByClassName("field");
-  btn[0].style.marginBottom = "120px";
-};
+  const onExpand = () => {
+    const btn = document.getElementsByClassName("field");
+    btn[0].style.marginBottom = "120px";
+  };
   const tileDisabled = ({ date, view }) => {
     if (view === "month") {
       // Disable past days
