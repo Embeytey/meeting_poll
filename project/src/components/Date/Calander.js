@@ -5,11 +5,33 @@ import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 
 export default function CalendarDate() {
+  const endpoint = "https://your-backend-endpoint.com/save-dates";
+
   const [selectedDates, setSelectedDates] = useState([]);
   const [selectedTimeRange, setSelectedTimeRange] = useState([
     "09:00",
     "10:00",
-  ]); // Default time range
+  ]);
+
+  fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(selectedDates),
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Data sent to the backend successfully!");
+
+        setSelectedDates([]);
+      } else {
+        throw new Error("Failed to send data");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 
   const handleDateClick = (value) => {
     const dateIndex = selectedDates.findIndex(
