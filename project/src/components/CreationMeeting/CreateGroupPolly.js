@@ -59,42 +59,6 @@ const CreateGroupPolly = ({ news }) => {
 
   const [userpk, setPk] = useState("");
 
-
-  const handleApi = async (e) => {
-    e.preventDefault();
-    console.log("inside");
-    let data = {
-      customer: userpk,
-      title: title,
-      description: description,
-      location: location,
-    };
-    try {
-      const result = axios.post("http://127.0.0.1:8000/api/meetings/", data, {
-        headers: {
-          authorization: `Token ${getToken()}`,
-        },
-      });
-      alert("Appointment Booked successfully !");
-      // navigate("/myappt");
-      console.log(result);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const onExpand = (index) => {
-    const btn = document.getElementsByClassName("field");
-    if (index === 0) btn[0].style.marginBottom = "120px";
-    else btn[1].style.paddingBottom = "180px";
-  };
-
-  const onContraction = (index) => {
-    const btn = document.getElementsByClassName("field");
-    if (index === 0) btn[0].style.marginBottom = "0px";
-    else btn[1].style.paddingBottom = "0px";
-  };
-
   const submitForm = () => {
     if (title === "") {
       setError(true);
@@ -121,6 +85,44 @@ const CreateGroupPolly = ({ news }) => {
       updateLocation("");
       updateVideo("");
     }
+  };
+
+  const handleApi = async (e) => {
+    e.preventDefault();
+    console.log("inside");
+    let data = {
+      title: title,
+      description: description,
+      location: location,
+    };
+    try {
+      const result = axios.post("http://127.0.0.1:8000/api/meetings/", data, {
+        headers: {
+          authorization: `Token ${getToken()}`,
+        },
+      });
+      alert("Mettting Created successfully !");
+      // navigate("/myappt");
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const handleButtonClick = (e) => {
+    submitForm();
+    handleApi(e);
+  };
+
+  const onExpand = (index) => {
+    const btn = document.getElementsByClassName("field");
+    if (index === 0) btn[0].style.marginBottom = "120px";
+    else btn[1].style.paddingBottom = "180px";
+  };
+
+  const onContraction = (index) => {
+    const btn = document.getElementsByClassName("field");
+    if (index === 0) btn[0].style.marginBottom = "0px";
+    else btn[1].style.paddingBottom = "0px";
   };
 
   return (
@@ -153,12 +155,12 @@ const CreateGroupPolly = ({ news }) => {
           <div style={{ textAlign: "end" }}>
             <ColorButton
               style={{ margin: 20, textAlign: "end" }}
-              onClick={submitForm}
+              onClick={handleButtonClick}
               variant="contained"
+              type="submit"
             >
               Create Invate and Continue
             </ColorButton>
-            <Button type="submit" onClick={handleApi}> Submit </Button>
           </div>
         </Grid>
         <Grid className="dx_news" item xs={3}>
