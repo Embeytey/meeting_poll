@@ -9,6 +9,7 @@ import { styled } from "@mui/material/styles";
 import CreateGroup from "./CreateGroup.js";
 import RangeDate from "../Date/RangeDate";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateGroupPolly = ({ news }) => {
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -52,7 +53,7 @@ const CreateGroupPolly = ({ news }) => {
     setChecked(event.target.checked);
   };
 
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   // console.log({ customer, title, subject, date });
 
   const getToken = () => sessionStorage.getItem("token");
@@ -102,7 +103,7 @@ const CreateGroupPolly = ({ news }) => {
         },
       });
       alert("Mettting Created successfully !");
-      // navigate("/myappt");
+      navigate("/manage");
       console.log(result);
     } catch (e) {
       console.log(e);
