@@ -60,32 +60,31 @@ const CreateGroupPolly = ({ news }) => {
 
   const [userpk, setPk] = useState("");
 
-  const submitForm = () => {
-    if (title === "") {
-      setError(true);
-      const element = document.getElementById("title_form");
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    } else {
-      console.log(
-        "title ",
-        title,
-        " description ",
-        description,
-        " location ",
-        location
-      );
-      if (checked) console.log("video ", video);
-      updateTitle("");
-      setChecked(false);
-      updateDescription("");
-      updateLocation("");
-      updateVideo("");
+  const titleError = () => {
+    setError(true);
+    const element = document.getElementById("title_form");
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
+  };
+
+  const checkRequirements = () => {
+    if (title === "") {
+      titleError()
+      return false;
+    } 
+    return true;
+  };
+
+  const deleteFields = () => {
+    updateTitle("");
+    setChecked(false);
+    updateDescription("");
+    updateLocation("");
+    updateVideo("");
   };
 
   const handleApi = async (e) => {
@@ -104,14 +103,15 @@ const CreateGroupPolly = ({ news }) => {
       });
       alert("Mettting Created successfully !");
       navigate("/manage");
+      deleteFields();
       console.log(result);
     } catch (e) {
       console.log(e);
     }
   };
   const handleButtonClick = (e) => {
-    submitForm();
-    handleApi(e);
+    if(checkRequirements())
+      handleApi(e);
   };
 
   const onExpand = (index) => {
