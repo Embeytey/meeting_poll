@@ -5,7 +5,7 @@ import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 
 export default function CalendarDate() {
-  const endpoint = "https://your-backend-endpoint.com/save-dates";
+  const endpoint = "http://127.0.0.1:8000/api/meetings/";
 
   const [selectedDates, setSelectedDates] = useState([]);
   const [selectedTimeRange, setSelectedTimeRange] = useState([
@@ -13,26 +13,27 @@ export default function CalendarDate() {
     "10:00",
   ]);
 
-  fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(selectedDates),
-  })
-    .then((response) => {
-      if (response.ok) {
-        console.log("Data sent to the backend successfully!");
-
-        setSelectedDates([]);
-      } else {
-        throw new Error("Failed to send data");
-      }
+  const handleSubmit = () => {
+    fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(selectedDates),
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+      .then((response) => {
+        if (response.ok) {
+          console.log("Data sent to the backend successfully!");
 
+          setSelectedDates([]);
+        } else {
+          throw new Error("Failed to send data");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
   const handleDateClick = (value) => {
     const dateIndex = selectedDates.findIndex(
       (dateObj) => dateObj.date.toDateString() === value.toDateString()
@@ -106,6 +107,7 @@ export default function CalendarDate() {
             <p>End Time: {selectedTimeRange[1]}</p>
           </div>
         </div>
+        <button onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );

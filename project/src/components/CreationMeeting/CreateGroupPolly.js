@@ -1,6 +1,6 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./createGroupPolly.css";
 import News from "./News";
 import Button from "@mui/material/Button";
@@ -8,6 +8,7 @@ import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import CreateGroup from "./CreateGroup.js";
 import RangeDate from "../Date/RangeDate";
+import axios from "axios";
 
 const CreateGroupPolly = ({ news }) => {
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -49,6 +50,37 @@ const CreateGroupPolly = ({ news }) => {
 
   const updateCheck = (event) => {
     setChecked(event.target.checked);
+  };
+
+  // let navigate = useNavigate();
+  // console.log({ customer, title, subject, date });
+
+  const getToken = () => sessionStorage.getItem("token");
+
+  const [userpk, setPk] = useState("");
+
+
+  const handleApi = async (e) => {
+    e.preventDefault();
+    console.log("inside");
+    let data = {
+      customer: userpk,
+      title: title,
+      description: description,
+      location: location,
+    };
+    try {
+      const result = axios.post("http://127.0.0.1:8000/api/meetings/", data, {
+        headers: {
+          authorization: `Token ${getToken()}`,
+        },
+      });
+      alert("Appointment Booked successfully !");
+      // navigate("/myappt");
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const onExpand = (index) => {
@@ -126,6 +158,7 @@ const CreateGroupPolly = ({ news }) => {
             >
               Create Invate and Continue
             </ColorButton>
+            <Button type="submit" onClick={handleApi}> Submit </Button>
           </div>
         </Grid>
         <Grid className="dx_news" item xs={3}>
