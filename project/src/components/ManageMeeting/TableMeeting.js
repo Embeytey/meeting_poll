@@ -5,7 +5,7 @@ import maybeImage from "../images/maybe.png";
 import user from "../images/user.png";
 import "./manage.css";
 
-const TableMeeting = ({ selectedColumns, columnSelection }) => {
+const TableMeeting = ({ selectedColumn, columnSelection }) => {
   const renderCellContent = (column, row) => {
     if (row[column] === "yes") {
       return (
@@ -76,7 +76,7 @@ const TableMeeting = ({ selectedColumns, columnSelection }) => {
                 style={{ position: "relative" }}
                 onClick={() => columnSelection(column)}
                 className={
-                  selectedColumns.includes(column) ? "selected_column" : ""
+                  selectedColumn === column ? "selected_column" : ""
                 }
               >
                 {index === 0 ? (
@@ -95,7 +95,7 @@ const TableMeeting = ({ selectedColumns, columnSelection }) => {
                     <img
                       id="star"
                       className={
-                        selectedColumns.includes(column)
+                        selectedColumn === column
                           ? "img_star_select"
                           : "img_star_unselect"
                       }
@@ -106,8 +106,8 @@ const TableMeeting = ({ selectedColumns, columnSelection }) => {
                     <p>day</p>
                     <p>start_time</p>
                     <p>end_time</p>
-                    <div class="div_user">
-                      <img src={user} />
+                    <div className="div_user">
+                      <img src={user} alt="user" />
                       <nobr> 2</nobr>
                     </div>
                   </label>
@@ -124,7 +124,7 @@ const TableMeeting = ({ selectedColumns, columnSelection }) => {
                   key={colIndex}
                   onClick={() => columnSelection(column)}
                   className={
-                    selectedColumns.includes(column) ? "selected_column" : ""
+                    selectedColumn  === column ? "selected_column" : ""
                   }
                 >
                   {column === "partecipants" ? (

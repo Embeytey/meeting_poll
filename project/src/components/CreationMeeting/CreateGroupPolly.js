@@ -1,6 +1,6 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./createGroupPolly.css";
 import News from "./News";
 import Button from "@mui/material/Button";
@@ -11,7 +11,8 @@ import RangeDate from "../Date/RangeDate";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const CreateGroupPolly = ({ news }) => {
+const CreateGroupPolly = ( { news } ) => {
+
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(grey[600]),
     backgroundColor: grey[600],
@@ -58,8 +59,6 @@ const CreateGroupPolly = ({ news }) => {
 
   const getToken = () => sessionStorage.getItem("token");
 
-  const [userpk, setPk] = useState("");
-
   const titleError = () => {
     setError(true);
     const element = document.getElementById("title_form");
@@ -96,7 +95,7 @@ const CreateGroupPolly = ({ news }) => {
       location: location,
     };
     try {
-      const result = axios.post("http://127.0.0.1:8000/api/meetings/", data, {
+      const result = axios.post("http://127.0.0.1:8000/api/meetings/new/", data, {
         headers: {
           authorization: `Token ${getToken()}`,
         },
@@ -119,6 +118,8 @@ const CreateGroupPolly = ({ news }) => {
     if (index === 0) btn[0].style.marginBottom = "120px";
     else btn[1].style.paddingBottom = "180px";
   };
+
+  console.log("news", news)
 
   const onContraction = (index) => {
     const btn = document.getElementsByClassName("field");

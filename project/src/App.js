@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Welcome from "./pages/Welcome";
@@ -8,7 +7,7 @@ import {
   Route,
   } from "react-router-dom";
 import Creation from "./pages/Creation";
-import Manage from "./components/ManageMeeting/ManageMeetingContainer";
+import Manage from "./pages/Manage";
 
 function App() {
   return (

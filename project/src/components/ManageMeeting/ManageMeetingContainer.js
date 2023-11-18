@@ -7,13 +7,14 @@ import "../CreationMeeting/createGroupPolly.css";
 import "../ManageMeeting/manage.css";
 import ManageMeeting from "../ManageMeeting/ManageMeeting";
 import News from "../CreationMeeting/News";
-import news from "../../news.json";
 import TableMeeting from "../ManageMeeting/TableMeeting";
 import Button from "@mui/material/Button";
 import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
+import axios from "axios";
 
-const Manage = () => {
+const Manage = ( { news, data }) => {
+
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(grey[600]),
     backgroundColor: grey[600],
@@ -22,18 +23,35 @@ const Manage = () => {
     },
   }));
 
+  const getToken = () => sessionStorage.getItem("token");
+
   const submitForm = () => {
-    console.log(selectedColumns);
+    console.log("id ", data["id"], selectedColumn);
+    let d = {
+      id: data["id"],
+      time_slots: selectedColumn,
+    };
+    try {
+      const result = axios.post("meeting/" + data["id"] + "/book/", d, {
+        headers: {
+          authorization: `Token ${getToken()}`,
+        },
+      });
+      alert("Mettting Booked !");
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
-  const [selectedColumns, setSelectedColumns] = useState([]);
+  const [selectedColumn, setSelectedColumn] = useState([]);
 
   const columnSelection = (columnName) => {
     if (columnName !== "partecipants") {
-      if (selectedColumns.includes(columnName)) {
-        setSelectedColumns(selectedColumns.filter((col) => col !== columnName));
+      if (selectedColumn === columnName) {
+        setSelectedColumn("");
       } else {
-        setSelectedColumns([...selectedColumns, columnName]);
+        setSelectedColumn(columnName);
       }
     }
   };
@@ -47,9 +65,10 @@ const Manage = () => {
           </Grid>
           <Grid style={{ marginTop: 32, paddingLeft: 0 }} item xs={6}>
             <div className="field">
-              <ManageMeeting />
+              <ManageMeeting data={data}/>
               <TableMeeting
-                selectedColumns={selectedColumns}
+                data={data}
+                selectedColumn={selectedColumn}
                 columnSelection={columnSelection}
               />
               <div style={{ textAlign: "end" }}>

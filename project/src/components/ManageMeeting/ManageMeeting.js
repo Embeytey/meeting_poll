@@ -13,9 +13,8 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import "./manage.css";
-import { useState, useEffect } from "react";
 
-const ManageMeeting = () => {
+const ManageMeeting = ( {data} ) => {
 
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(grey[600]),
@@ -38,23 +37,23 @@ const ManageMeeting = () => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <h2>Title meeting</h2>
+            <h2>{data["title"]}</h2>
             <p style={{ marginLeft: 24 }}>Owner meeting</p>
             <div className="manage_div_info">
               <img src={timeImage} alt="time.png" />
-              <nobr>Time meeting</nobr>
+              <nobr>{data["duration"]}</nobr>
             </div>
             <div className="manage_div_info">
               <img src={locationImage} alt="location.png" />
-              <nobr>Location meeting</nobr>
+              <nobr>{data["location"]}</nobr>
             </div>
             <div className="manage_div_info">
               <img src={videoImage} alt="video.png" />
-              <nobr>Video meeting</nobr>
+              <nobr>{data["video"]}</nobr>
             </div>
             <div className="manage_div_info">
               <img src={descriptionImage} alt="description.png" />
-              <nobr>Description meeting</nobr>
+              <div>{data["description"]}</div>
             </div>
           </Grid>
           <Grid item xs={6}>
